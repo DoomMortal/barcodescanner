@@ -25,7 +25,7 @@ Installation
 
 Add the following dependency to your build.gradle file.
 
-`compile 'me.dm7.barcodescanner:zxing:1.9'`
+`compile 'me.dm7.barcodescanner:zxing:1.9.8'`
 
 Simple Usage
 ------------
@@ -75,12 +75,12 @@ public class SimpleScannerActivity extends Activity implements ZXingScannerView.
 
 ```
 
-Please take a look at the [zxing-sample] (https://github.com/dm77/barcodescanner/tree/master/zxing-sample) project for a full working example.
+Please take a look at the [zxing-sample](https://github.com/dm77/barcodescanner/tree/master/zxing-sample) project for a full working example.
 
 Advanced Usage
 --------------
 
-Take a look at the [ScannerActivity.java] (https://github.com/dm77/barcodescanner/blob/master/zxing/sample/src/main/java/me/dm7/barcodescanner/zxing/sample/ScannerActivity.java) or [ScannerFragment.java] (https://github.com/dm77/barcodescanner/blob/master/zxing/sample/src/main/java/me/dm7/barcodescanner/zxing/sample/ScannerFragment.java) classes to get an idea on advanced usage.
+Take a look at the [FullScannerActivity.java](https://github.com/dm77/barcodescanner/blob/master/zxing-sample/src/main/java/me/dm7/barcodescanner/zxing/sample/FullScannerActivity.java) or [FullScannerFragment.java](https://github.com/dm77/barcodescanner/blob/master/zxing-sample/src/main/java/me/dm7/barcodescanner/zxing/sample/FullScannerFragment.java) classes to get an idea on advanced usage.
 
 Interesting methods on the ZXingScannerView include:
 
@@ -99,6 +99,17 @@ void startCamera(int cameraId);
 ```
 
 Specify front-facing or rear-facing cameras by using the `void startCamera(int cameraId);` method.
+
+
+For HUAWEI mobile phone like P9, P10, when scanning using the default settings, it won't work due to the
+"preview size",  please adjust the parameter as below:
+
+```java
+mScannerView = (ZXingScannerView) findViewById(R.id.zx_view);
+
+// this paramter will make your HUAWEI phone works great!
+mScannerView.setAspectTolerance(0.5f);
+```
 
 Supported Formats:
 
@@ -126,7 +137,7 @@ Installation
 
 Add the following dependency to your build.gradle file.
 
-`compile 'me.dm7.barcodescanner:zbar:1.9'`
+`compile 'me.dm7.barcodescanner:zbar:1.9.8'`
 
 Simple Usage
 ------------
@@ -176,13 +187,13 @@ public class SimpleScannerActivity extends Activity implements ZBarScannerView.R
 
 ```
 
-Please take a look at the [zbar/sample] (https://github.com/dm77/barcodescanner/tree/master/zbar/sample)  project for a full working example.
+Please take a look at the [zbar-sample](https://github.com/dm77/barcodescanner/tree/master/zbar-sample)  project for a full working example.
 
 Advanced Usage
 --------------
 
 
-Take a look at the [ScannerActivity.java] (https://github.com/dm77/barcodescanner/blob/master/zbar/sample/src/main/java/me/dm7/barcodescanner/zbar/sample/ScannerActivity.java) or [ScannerFragment.java] (https://github.com/dm77/barcodescanner/blob/master/zbar/sample/src/main/java/me/dm7/barcodescanner/zbar/sample/ScannerFragment.java) classes to get an idea on advanced usage.
+Take a look at the [FullScannerActivity.java](https://github.com/dm77/barcodescanner/blob/master/zbar-sample/src/main/java/me/dm7/barcodescanner/zbar/sample/FullScannerActivity.java) or [FullScannerFragment.java](https://github.com/dm77/barcodescanner/blob/master/zbar-sample/src/main/java/me/dm7/barcodescanner/zbar/sample/FullScannerFragment.java) classes to get an idea on advanced usage.
 
 Interesting methods on the ZBarScannerView include:
 
@@ -215,7 +226,7 @@ BarcodeFormat.DATABAR_EXP
 BarcodeFormat.CODABAR
 BarcodeFormat.CODE39
 BarcodeFormat.PDF417
-BarcodeFormat.QRCODE
+BarcodeFormat.QR_CODE
 BarcodeFormat.CODE93
 BarcodeFormat.CODE128
 ```
